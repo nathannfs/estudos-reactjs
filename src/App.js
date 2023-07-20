@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Post from "./Post";
 
 import Header from "./Header";
-import { func } from "prop-types";
 
 // o React trabalha com valores imutáveis
 
