@@ -99,4 +99,4 @@ Usar extensão .jsx ou .js não muda nada, é escrito do mesmo jeito
 
 <!-- yarn add prop-types -->
 
-Usamos o PropTypes pasa tipar as props dos componentes
+Usamos o PropTypes para tipar as props dos componentes
