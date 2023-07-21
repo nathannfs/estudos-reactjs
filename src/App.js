@@ -10,10 +10,34 @@ import Header from "./Header";
 function App() {
   // useState - permite fazer alterações em um array e retornar ele
   const [posts, setPosts] = useState([
-    { id: Math.random(), title: "Title#01", subtitle: "Sub#01", likes: 20 },
-    { id: Math.random(), title: "Title#02", subtitle: "Sub#02", likes: 10 },
-    { id: Math.random(), title: "Title#03", subtitle: "Sub#03", likes: 50 },
-    { id: Math.random(), title: "Title#04", subtitle: "Sub#03", likes: 50 },
+    {
+      id: Math.random(),
+      title: "Title#01",
+      subtitle: "Sub#01",
+      likes: 20,
+      read: false,
+    },
+    {
+      id: Math.random(),
+      title: "Title#02",
+      subtitle: "Sub#02",
+      likes: 10,
+      read: true,
+    },
+    {
+      id: Math.random(),
+      title: "Title#03",
+      subtitle: "Sub#03",
+      likes: 50,
+      read: false,
+    },
+    {
+      id: Math.random(),
+      title: "Title#04",
+      subtitle: "Sub#03",
+      likes: 50,
+      read: true,
+    },
   ]);
 
   console.log({ posts });
@@ -29,22 +53,26 @@ function App() {
     // });
 
     // usamos deste jeito com useState
-    setTimeout(() => {
-      // para limpar a lista
-      // setPosts([]);
+    // para limpar a lista
+    // setPosts([]);
 
-      // useState recebe um único argumento que é o prevState, que é basicamente a lista de post antes de fazer a alteração neste exemplo
-      // sempre que precisarmos do valor anterior usando useState, precisamos passar uma função e usar prevState como o exemplo abaixo
-      setPosts((prevState) => [
-        ...prevState,
-        {
-          id: Math.random(),
-          title: `Title#0${prevState.length + 1}`,
-          subtitle: `Sub#0${prevState.length + 1}`,
-          likes: Number((Math.random() * 100).toFixed(0)),
-        },
-      ]);
-    }, 2000);
+    // useState recebe um único argumento que é o prevState, que é basicamente a lista de post antes de fazer a alteração neste exemplo
+    // sempre que precisarmos do valor anterior usando useState, precisamos passar uma função e usar prevState como o exemplo abaixo
+    setPosts((prevState) => [
+      ...prevState,
+      {
+        id: Math.random(),
+        title: `Title#0${prevState.length + 1}`,
+        subtitle: `Sub#0${prevState.length + 1}`,
+        likes: Number((Math.random() * 100).toFixed(0)),
+      },
+    ]);
+  }
+
+  // função para remover um post a partir do id
+  function handleRemovePost(postId) {
+    // passamos um filtro para quando clicar em remover algum post, filtrarmos os post e deixarmos só os posts que não tem o id que recebemos quando clicamos em remover
+    setPosts((prevState) => prevState.filter((post) => post.id !== postId));
   }
 
   return (
@@ -84,10 +112,9 @@ function App() {
           // ela precisa ser única
           key={post.id}
           likes={post.likes}
-          post={{
-            title: post.title,
-            subtitle: post.subtitle,
-          }}
+          onRemove={handleRemovePost}
+          // aqui passamos o objeto completo porque estamos usando todos
+          post={post}
         />
       ))}
     </>

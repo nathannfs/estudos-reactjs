@@ -100,3 +100,7 @@ Usar extensão .jsx ou .js não muda nada, é escrito do mesmo jeito
 <!-- yarn add prop-types -->
 
 Usamos o PropTypes pasa tipar as props dos componentes
+
+<!-- Árvore de Componentes -->
+
+Context API - ele basicamente serve para criar um contexto de informações
