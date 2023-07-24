@@ -130,3 +130,13 @@ yarn add prop-types
 ```
 
 Usamos o PropTypes pasa tipar as props dos componentes.
+
+# Context API - serve para criar um contexto de informações
+
+## Prop Drilling - ação de passarmos um valor em vários níveis sem precisarmos usar ela, este é o problema que a Context API resolve
+
+### Provider - é um componente que a Context API provê para a gente - passamos uma propriedade chamada value, que são as informações que queremos compartilhar com nossos componentes
+
+Quando colocamos os componentes dentro desse Provider, então todos esses componentes eles conseguem acessar o value sem precisarmos repassar as propriedade explicitamente
+
+Resumidamente a Context é só isso, uma forma de repassar nossas propriedades em vários níveis, ou seja, vários componentes e filhos de componentes, sem precisar passar explicitamente

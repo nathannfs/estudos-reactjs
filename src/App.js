@@ -8,6 +8,8 @@ import Header from "./Header";
 
 // Props (Properties) -> Propriedades -
 function App() {
+  const [theme, setTheme] = useState("dark");
+
   // useState - permite fazer alterações em um array e retornar ele
   const [posts, setPosts] = useState([
     {
@@ -40,7 +42,9 @@ function App() {
     },
   ]);
 
-  console.log({ posts });
+  function handleToggleTheme() {
+    setTheme((prevState) => (prevState === "dark" ? "light" : "dark"));
+  }
 
   // função para o botão de atualizar
   function handleRefresh() {
@@ -84,7 +88,7 @@ function App() {
        Para passar valores de variáveis como conteúdo
        Quando abrimos chaves deste jeito {category}, estamos dizendo que tudo que está dentro daquela chave é para ser interpretado como código JavaScript e não html */}
 
-      <Header>
+      <Header theme={theme} onToggleTheme={handleToggleTheme}>
         {/* Prop Children - serve para pegar todo valor que a gente passa em um componente */}
         {/* // por padrão o react não entende onde renderiza o que está dentro da
         tag, então ele injeta uma propriedade que é a children no nosso componente
@@ -115,6 +119,7 @@ function App() {
           onRemove={handleRemovePost}
           // aqui passamos o objeto completo porque estamos usando todos
           post={post}
+          theme={theme}
         />
       ))}
     </>
