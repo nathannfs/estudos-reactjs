@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
+// importamos o contexto
+import { ThemeContext } from "./ThemeContext";
+
 export default function Button(props) {
-  const theme = props.theme;
+  // usamos useContext() para usarmos a Context que criamos - precisamos passar dentro dos parênteses o contexto que queremos consumir
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
@@ -22,7 +26,6 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-  theme: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
 };

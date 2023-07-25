@@ -17,17 +17,13 @@ export default function PostHeader(props) {
         {props.post.read && <s>{props.post.title}</s>}
         {!props.post.read && props.post.title}
       </strong>
-      <Button theme={props.theme} onClick={() => props.onRemove(props.post.id)}>
-        Remover
-      </Button>
+      <Button onClick={() => props.onRemove(props.post.id)}>Remover</Button>
     </>
   );
 }
 
 // tipando as props
 Post.propTypes = {
-  theme: PropTypes.string.isRequired,
-
   // isRequired quer dizer que é obrigatória
   likes: PropTypes.number.isRequired,
 
