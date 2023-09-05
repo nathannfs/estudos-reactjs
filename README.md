@@ -140,3 +140,23 @@ Usamos o PropTypes pasa tipar as props dos componentes.
 Quando colocamos os componentes dentro desse Provider, então todos esses componentes eles conseguem acessar o value sem precisarmos repassar as propriedade explicitamente
 
 Resumidamente a Context é só isso, uma forma de repassar nossas propriedades em vários níveis, ou seja, vários componentes e filhos de componentes, sem precisar passar explicitamente
+
+## Para usar arquivos css dentro do código, precisamos usar os loader adequado
+
+```
+yarn add css-loader style-loader -D
+```
+
+### Após isso configuramos dentro do arquivo do webpack.config
+
+## CSS Modules - é utilizado para não ter conflitos entre classes
+
+### Ele gera automaticamente uma hash aleatória para id's e classes para que não haja conflito na hora de utilizar no código
+
+## SASS e SASS Modules
+
+### SASS é um pré processador de css - basicamente introduz dentro do css funcionalidades que não teriamos dentro dele, tipo variáveis, funções, etc.
+
+```
+yarn add sass sass-loader -D
+```

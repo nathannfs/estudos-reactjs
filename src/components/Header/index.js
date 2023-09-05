@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import Button from "./Button";
 
-import { ThemeContext } from "./ThemeContext";
+import Title from "../Title";
+
+import Button from "../Button";
+
+import { ThemeContext } from "../../context/ThemeContext";
 
 // podemos aplicar desestruturização
 export default function Header(props) {
@@ -10,15 +13,16 @@ export default function Header(props) {
 
   return (
     <div
-      // dentro de style toda vez que tiver '-' escrevemos em formato camel case
-      style={{
-        background: "#ccc",
-        fontFamily: "sans-serif",
-        // com números podemos passar sem as aspas
-        marginBottom: 24,
-      }}
+    // dentro de style toda vez que tiver '-' escrevemos em formato camel case
+    // style={{
+    //   background: "#ccc",
+    //   fontFamily: "sans-serif",
+    //   // com números podemos passar sem as aspas
+    //   marginBottom: 24,
+    // }}
     >
-      <h1>{props.title}</h1>
+      {/* utilizando a estilização que importamos */}
+      <Title>{props.title}</Title>
       <Button onClick={onToggleTheme}>Mudar Tema</Button>
       {props.children}
     </div>

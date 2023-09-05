@@ -28,6 +28,24 @@ module.exports = {
         exclude: /node_modules/,
         use: "babel-loader",
       },
+      {
+        // identifica o tipo de arquivo
+        test: /.scss$/,
+
+        // quando quisermos utilizar mais de um loader para um mesmo tipo de arquivo, passamos um array
+        // a ordem aqui importa
+        use: [
+          "style-loader",
+          {
+            // configuração do css modules
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          "sass-loader",
+        ],
+      },
     ],
   },
   devServer: {

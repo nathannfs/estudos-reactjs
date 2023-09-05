@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-import Post from "./Post";
+import Post from "../Post";
 
-import Header from "./Header";
+import Header from "../Header";
 
-import { ThemeProvider } from "./ThemeContext";
+import { ThemeProvider } from "../../context/ThemeContext";
+
+import { Title } from "./styles";
 
 // o React trabalha com valores imutáveis
 
@@ -18,6 +20,7 @@ function App() {
       subtitle: "Sub#01",
       likes: 20,
       read: false,
+      removed: false,
     },
     {
       id: Math.random(),
@@ -25,6 +28,7 @@ function App() {
       subtitle: "Sub#02",
       likes: 10,
       read: true,
+      removed: false,
     },
     {
       id: Math.random(),
@@ -32,6 +36,7 @@ function App() {
       subtitle: "Sub#03",
       likes: 50,
       read: false,
+      removed: false,
     },
     {
       id: Math.random(),
@@ -39,6 +44,7 @@ function App() {
       subtitle: "Sub#03",
       likes: 50,
       read: true,
+      removed: true,
     },
   ]);
 
@@ -72,7 +78,12 @@ function App() {
   // função para remover um post a partir do id
   function handleRemovePost(postId) {
     // passamos um filtro para quando clicar em remover algum post, filtrarmos os post e deixarmos só os posts que não tem o id que recebemos quando clicamos em remover
-    setPosts((prevState) => prevState.filter((post) => post.id !== postId));
+    setPosts((prevState) =>
+      prevState.map((post) =>
+        // se o id for igual, pega o mesmo array do posto e sobrescreve a propriedade removed, se não só passa o post normal
+        post.id === postId ? { ...post, removed: true } : post
+      )
+    );
   }
 
   return (
@@ -90,11 +101,13 @@ function App() {
         {/* // por padrão o react não entende onde renderiza o que está dentro da
         tag, então ele injeta uma propriedade que é a children no nosso componente
         então a propriedade children recebe tudo que colocarmos aqui dentro da tag do componente */}
-        <h2>
+
+        {/* podemos mudar a tag html do styled-component que estamos passando deste jeito */}
+        <Title as="h2">
           Posts da semana
           {/* os eventos passamos como props */}
           <button onClick={handleRefresh}>Atualizar</button>
-        </h2>
+        </Title>
       </Header>
 
       <hr />

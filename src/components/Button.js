@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 // importamos o contexto
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Button(props) {
   // usamos useContext() para usarmos a Context que criamos - precisamos passar dentro dos parênteses o contexto que queremos consumir
