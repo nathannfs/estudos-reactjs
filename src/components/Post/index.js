@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PostHeader from "./PostHeader";
-import styles from "./Post.scss";
 
-import { SubTitle, Rate } from "./styles";
+import { Container, SubTitle, Rate } from "./styles";
 
 // todo componente do React recebe um único argumento que são as props
 export default function Post(props) {
@@ -13,16 +12,7 @@ export default function Post(props) {
   // }
 
   return (
-    <article
-      className={
-        // classe dinâmica é conseguirmos fazer essa manipulação de classes dinâmicamente dentro do html
-        props.post.removed
-          ? // se a propriedade removed for true recebe a classe postDeleted
-            styles.postDeleted
-          : // se não recebe a classe post
-            styles.post
-      }
-    >
+    <Container removed={props.post.removed}>
       <PostHeader
         onRemove={props.onRemove}
         post={{
@@ -34,7 +24,7 @@ export default function Post(props) {
 
       <SubTitle>{props.post.subtitle}</SubTitle>
       <Rate>Media: {props.post.likes / 2}</Rate>
-    </article>
+    </Container>
   );
 }
 

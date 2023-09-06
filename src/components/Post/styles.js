@@ -1,4 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+export const Container = styled.article`
+  margin-bottom: 32px;
+
+  /* opacity: ${(props) => (props.removed ? 0.5 : 1)};
+  color: ${(props) => (props.removed ? "#f00" : "#fff")}; */
+
+  // retornar vários css em uma mesma expressão
+  ${(props) => css`
+    opacity: ${props.removed ? 0.5 : 1};
+    color: ${props.removed ? "#f00" : "#fff"};
+  `}
+`;
 
 // CSS-in-JS
 
