@@ -1,3 +1,4 @@
+// informações comuns independentemente do tema
 export default {
   spacing: {
     small: 8,
