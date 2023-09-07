@@ -160,3 +160,9 @@ yarn add css-loader style-loader -D
 ```
 yarn add sass sass-loader -D
 ```
+
+## Theming - a vantagem é quando utiliza principalmente style guide, que seria um guia de estilo mesmo
+
+### É utilizado para organização na hora da manutenção, organizar melhor os estilos usados na aplicação
+
+## ThemeProvider - utiliza a Context API
