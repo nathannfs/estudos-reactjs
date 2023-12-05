@@ -7,7 +7,7 @@ export const Container = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  border-radius: 10px;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   button {
     font-size: 16px;
