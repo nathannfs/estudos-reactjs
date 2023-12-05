@@ -1,8 +1,10 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
 import GlobalStyle from './styles/global'
 import Layout from './components/Layout'
+import { ThemeProvider, ThemeContext } from './contexts/ThemeContext'
+
 import themes from './styles/themes'
 
 class App extends React.Component {
@@ -36,36 +38,78 @@ class App extends React.Component {
   // }
 
   // 2º forma
-  state = {
-    theme: 'dark',
-    hi: true,
-  }
+  // state = {
+  //   theme: 'dark',
+  //   hi: true,
+  // }
 
   // criando métodos dentro de uma classe
 
   // em vez de criar uma função e precisar usar binding para pegar o this da classe, podemos criar a função como uma arrow function, pois deste jeito a arrow function vai herdar o this da onde ela está sendo criada
-  handleToggleTheme = () => {
-    // existe uma função dentro do React.Component que força a renderização dele em tela, sem ter alteração nas props ou states
-    // this.forceUpdate()
+  // handleToggleTheme = () => {
+  //   // existe uma função dentro do React.Component que força a renderização dele em tela, sem ter alteração nas props ou states
+  //   // this.forceUpdate()
 
-    // estamos setando um estado, ele faz um merge com o this.state que estamos passando anteriormente
-    this.setState((prevState) => ({
-      // para pegar os valor existentes que estão no this.state utilizamos prevState também
-      // acessamos a propriedade que pegamos
-      theme: prevState.theme === 'dark' ? 'light' : 'dark',
-    }))
+  //   // estamos setando um estado, ele faz um merge com o this.state que estamos passando anteriormente
+  //   this.setState((prevState) => ({
+  //     // para pegar os valor existentes que estão no this.state utilizamos prevState também
+  //     // acessamos a propriedade que pegamos
+  //     theme: prevState.theme === 'dark' ? 'light' : 'dark',
+  //   }))
+  // }
+
+  state = {
+    changed: false,
   }
 
-  render() {
-    const { theme } = this.state
+  // LifeCycles
 
+  // componentDidMount - ele vai ser executado assim que o componente for exibido para o usuário
+  componentDidMount() {
+    console.log('componentDidMount executou')
+  }
+
+  // componentDidUpdate - vai ser executado depois de ter alterações nas props ou states dos componentes
+  componentDidUpdate(prevProps, prevState) {
+    console.log({
+      currentState: this.state,
+      prevState,
+      prevProps,
+    })
+  }
+
+  // componentDidCatch - server para pegar os erros que acontecerem dentro dos componentes filho dos componentes que criamos ele
+  componentDidCatch(error, info) {}
+
+  // shouldComponentUpdate - vai ser executado antes de ter alterações nas props ou states dos componentes, ele é o único que precisa retornar algo, e tem que ser booleano
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log({
+      currentState: this.state,
+      nextState,
+      nextProps,
+    })
+
+    // este componente é como se fosse uma pergunta, este componente deve atualizar?, ai o return vai ser a resposta se sim ou não
+    return true
+  }
+
+  // componentWillUnmount - vai ser executado antes do componente for desmontado, antes de ele sair da tela
+  componentWillUnmount() {}
+
+  render() {
     return (
-      <ThemeProvider theme={themes[theme] || themes.dark}>
-        <GlobalStyle />
-        <Layout
-          onToggleTheme={this.handleToggleTheme}
-          selectedTheme={theme}
-        />{' '}
+      <ThemeProvider>
+        <button onClick={() => this.setState({ changed: true })}>
+          Change State
+        </button>
+        <ThemeContext.Consumer>
+          {({ theme }) => (
+            <StyledThemeProvider theme={themes[theme] || themes.dark}>
+              <GlobalStyle />
+              <Layout />{' '}
+            </StyledThemeProvider>
+          )}
+        </ThemeContext.Consumer>
       </ThemeProvider>
     )
   }
