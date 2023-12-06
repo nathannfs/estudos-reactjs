@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { Container } from './styles';
+import { Container } from './styles'
 
 export default function Post({ title, description }) {
   return (
@@ -8,5 +8,5 @@ export default function Post({ title, description }) {
       <h2>{title}</h2>
       <small>{description}</small>
     </Container>
-  );
+  )
 }

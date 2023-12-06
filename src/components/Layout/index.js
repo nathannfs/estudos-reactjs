@@ -1,18 +1,30 @@
 import React, { useEffect } from 'react'
 // import { useTheme } from 'styled-components';
 
+import { BrowserRouter, Link } from 'react-router-dom'
+
+// import PostsList from '../PostsList'
 import Header from '../Header'
-import PostsList from '../PostsList'
 import Footer from '../Footer'
+
+import Routes from '../../Routes'
+
+import { Nav } from './styles'
 
 export default class Layout extends React.Component {
   render() {
     return (
-      <>
+      <BrowserRouter>
         <Header />
-        <PostsList />
+        <Nav>
+          <Link to='/'>Home</Link>
+          <Link to='/posts'>Posts</Link>
+        </Nav>
+
+        <Routes />
+        {/* <PostsList /> */}
         <Footer />
-      </>
+      </BrowserRouter>
     )
   }
 }

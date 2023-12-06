@@ -6,7 +6,7 @@ import Post from './Post'
 import posts from './posts'
 
 // todo componente de classe precisa estender algo que está dentro do React.Component
-export default class PostsList extends React.Component {
+export default class Posts extends React.Component {
   // obrigatório usar render, ele serve para renderizar o componente
   render() {
     return (

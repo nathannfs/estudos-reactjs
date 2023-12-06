@@ -66,7 +66,7 @@ class App extends React.Component {
 
   // componentDidMount - ele vai ser executado assim que o componente for exibido para o usuário
   componentDidMount() {
-    console.log('componentDidMount executou')
+    // console.log('componentDidMount executou')
   }
 
   // componentDidUpdate - vai ser executado depois de ter alterações nas props ou states dos componentes
@@ -99,9 +99,6 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider>
-        <button onClick={() => this.setState({ changed: true })}>
-          Change State
-        </button>
         <ThemeContext.Consumer>
           {({ theme }) => (
             <StyledThemeProvider theme={themes[theme] || themes.dark}>

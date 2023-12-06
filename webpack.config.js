@@ -1,7 +1,7 @@
 // aqui precisamos usar common js
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   // aqui passaremos todas as instruções que o webpack precisa ter para gerar o bundle dentro do nosso projeto
@@ -51,5 +51,6 @@ module.exports = {
   devServer: {
     // colocar a porta que quer rodar o servidor local
     port: 3000,
+    historyApiFallback: true,
   },
-};
+}
